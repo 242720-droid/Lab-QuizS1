@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "category": "Fiction",
+    "year": 1960
+  },
+  {
+    "id": "2",
+    "title": "A Brief History of Time",
+    "author": "Stephen Hawking",
+    "category": "Science",
+    "year": 1988
+  },
+  {
+    "id": "3",
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "category": "Technology",
+    "year": 2008
+  },
+  {
+    "id": "4",
+    "title": "Sapiens: A Brief History of Humankind",
+    "author": "Yuval Noah Harari",
+    "category": "History",
+    "year": 2011
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "name": "library-book-tracker",
+  "version": "1.0.0",
+  "description": "Library Book Tracker - University Full Stack Web Development Lab Quiz",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "library",
+    "book-tracker",
+    "express",
+    "bootstrap",
+    "javascript"
+  ],
+  "author": "Student",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

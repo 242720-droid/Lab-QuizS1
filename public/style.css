@@ -1,0 +1,107 @@
+/* =============================================================================
+   Library Book Tracker - Custom Stylesheet
+   ============================================================================= */
+
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --bg-soft: #f8f9fa;
+  --card-hover-transform: translateY(-4px);
+  --transition-speed: 0.25s;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
+/* Card Hover and Animation Effects */
+.book-card {
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.book-card:hover {
+  transform: var(--card-hover-transform);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Category Badges Styling */
+.badge-category {
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  padding: 0.4em 0.75em;
+  border-radius: 50rem;
+}
+
+.category-fiction {
+  background-color: #e7f1ff;
+  color: #0d6efd;
+}
+
+.category-non-fiction {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.category-science {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.category-technology {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.category-history {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.category-philosophy {
+  background-color: #fce4ec;
+  color: #c2185b;
+}
+
+.category-biography {
+  background-color: #ede7f6;
+  color: #512da8;
+}
+
+.category-default {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+/* Form Styles */
+.form-control:focus,
+.form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+/* Delete Button Hover Effect */
+.btn-delete {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-delete:hover {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+/* Alert Transitions */
+#alertBox {
+  position: relative;
+  z-index: 1050;
+}
