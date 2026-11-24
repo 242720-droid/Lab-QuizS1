@@ -1,107 +1,463 @@
 /* =============================================================================
-   Library Book Tracker - Custom Stylesheet
+   Library Book Tracker - Dark Minimalist Stylesheet
+   Crafted with deep obsidian tones, subtle neon accents, and smooth micro-interactions
    ============================================================================= */
 
 :root {
-  --primary-color: #0d6efd;
-  --secondary-color: #6c757d;
-  --bg-soft: #f8f9fa;
-  --card-hover-transform: translateY(-4px);
-  --transition-speed: 0.25s;
+  /* Dark Minimalist Palette */
+  --bg-body: #0b0f19;
+  --bg-surface: #111827;
+  --bg-surface-elevated: #161f33;
+  --bg-surface-hover: #1c263d;
+  
+  /* Borders and Glass */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(99, 102, 241, 0.35);
+  
+  /* Accents */
+  --accent: #6366f1;
+  --accent-light: #818cf8;
+  --accent-glow: rgba(99, 102, 241, 0.25);
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  
+  /* Text */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  /* Physics */
+  --transition-smooth: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+/* Base Body Setup */
+body.dark-theme {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+    radial-gradient(at 90% 90%, rgba(14, 165, 233, 0.05) 0px, transparent 50%);
+  background-attachment: fixed;
 }
 
-footer {
-  margin-top: auto;
+/* Glassmorphism Navbar */
+.glass-navbar {
+  background: rgba(11, 15, 25, 0.82) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.85rem 0;
+  transition: var(--transition-smooth);
 }
 
-/* Card Hover and Animation Effects */
-.book-card {
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+.brand-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px var(--accent-glow);
 }
 
-.book-card:hover {
-  transform: var(--card-hover-transform);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12) !important;
+.brand-text {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #ffffff;
+  letter-spacing: -0.02em;
 }
 
-/* Category Badges Styling */
-.badge-category {
-  font-size: 0.75rem;
-  letter-spacing: 0.03em;
+.text-accent {
+  color: var(--accent-light) !important;
+}
+
+.badge-brand {
+  font-size: 0.65rem;
   font-weight: 600;
-  padding: 0.4em 0.75em;
-  border-radius: 50rem;
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--accent-light);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
 }
 
-.category-fiction {
-  background-color: #e7f1ff;
-  color: #0d6efd;
+.stats-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
-.category-non-fiction {
-  background-color: #e8f5e9;
-  color: #2e7d32;
+.btn-nav-action {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+  padding: 0.45rem 1rem !important;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition-smooth);
 }
 
-.category-science {
-  background-color: #f3e5f5;
-  color: #7b1fa2;
+.btn-nav-action:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: var(--accent-light) !important;
 }
 
-.category-technology {
-  background-color: #e0f2fe;
-  color: #0284c7;
+/* Hero Section */
+.hero-banner {
+  background: linear-gradient(135deg, rgba(22, 31, 51, 0.85) 0%, rgba(17, 24, 39, 0.85) 100%);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
 }
 
-.category-history {
-  background-color: #fff3e0;
-  color: #e65100;
+.hero-glow {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
 }
 
-.category-philosophy {
-  background-color: #fce4ec;
-  color: #c2185b;
+.hero-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-light);
+  background: rgba(99, 102, 241, 0.12);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(99, 102, 241, 0.25);
 }
 
-.category-biography {
-  background-color: #ede7f6;
-  color: #512da8;
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
 }
 
-.category-default {
-  background-color: #f1f5f9;
-  color: #475569;
+.hero-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 620px;
+}
+
+.course-chip {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+}
+
+/* Glass Cards */
+.glass-card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-subtle) !important;
+  backdrop-filter: blur(12px);
+  transition: var(--transition-smooth);
 }
 
 /* Form Styles */
-.form-control:focus,
-.form-select:focus {
-  border-color: #86b7fe;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+.form-label-custom {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
 }
 
-/* Delete Button Hover Effect */
+.input-wrapper, .filter-input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.filter-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.form-control-custom {
+  background-color: var(--bg-surface-elevated) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+  border-radius: 10px !important;
+  padding: 0.65rem 0.9rem 0.65rem 2.5rem !important;
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+}
+
+.form-control-custom::placeholder {
+  color: var(--text-muted) !important;
+}
+
+.form-control-custom:focus {
+  background-color: var(--bg-surface-hover) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow) !important;
+  color: #ffffff !important;
+}
+
+/* Buttons */
+.btn-accent {
+  background: var(--accent-gradient) !important;
+  border: none !important;
+  color: #ffffff !important;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 14px var(--accent-glow);
+  transition: var(--transition-smooth);
+}
+
+.btn-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+}
+
+.btn-ghost {
+  background: transparent !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-primary) !important;
+}
+
+.btn-outline-accent {
+  background: transparent;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: var(--accent-light);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.btn-outline-accent:hover {
+  background: rgba(99, 102, 241, 0.15);
+  color: #ffffff;
+  border-color: var(--accent-light);
+}
+
+/* Badge Accent */
+.badge-accent-subtle {
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--accent-light);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 0.3rem 0.55rem;
+}
+
+.count-highlight {
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+/* =============================================================================
+   Book Cards - Dark Minimalist Aesthetic
+   ============================================================================= */
+.book-card {
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-surface-elevated) 100%) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: 14px !important;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 15px rgba(99, 102, 241, 0.15) !important;
+}
+
+.book-card:hover::before {
+  opacity: 1;
+}
+
+/* Overriding typography inside cards for dark theme clarity */
+.book-card .card-title,
+.book-card .text-dark {
+  color: var(--text-primary) !important;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.book-card .text-muted {
+  color: var(--text-secondary) !important;
+}
+
+.book-card .border-top {
+  border-color: var(--border-subtle) !important;
+}
+
+/* Dark Mode Category Badges */
+.badge-category {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+}
+
+.category-fiction {
+  background: rgba(99, 102, 241, 0.14) !important;
+  color: #a5b4fc !important;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.category-non-fiction {
+  background: rgba(16, 185, 129, 0.14) !important;
+  color: #6ee7b7 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.category-science {
+  background: rgba(217, 70, 239, 0.14) !important;
+  color: #f0abfc !important;
+  border: 1px solid rgba(217, 70, 239, 0.3);
+}
+
+.category-technology {
+  background: rgba(14, 165, 233, 0.14) !important;
+  color: #7dd3fc !important;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+.category-history {
+  background: rgba(245, 158, 11, 0.14) !important;
+  color: #fcd34d !important;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.category-philosophy {
+  background: rgba(244, 63, 94, 0.14) !important;
+  color: #fda4af !important;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.category-biography {
+  background: rgba(168, 85, 247, 0.14) !important;
+  color: #d8b4fe !important;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.category-default {
+  background: rgba(148, 163, 184, 0.14) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+/* Minimalist Delete Button */
 .btn-delete {
-  transition: background-color 0.2s ease, color 0.2s ease;
+  background: rgba(239, 68, 68, 0.08) !important;
+  border: 1px solid rgba(239, 68, 68, 0.25) !important;
+  color: #f87171 !important;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border-radius: 7px;
+  padding: 0.3rem 0.65rem;
+  transition: var(--transition-smooth);
 }
 
 .btn-delete:hover {
-  background-color: #dc3545;
-  color: #ffffff;
+  background: #ef4444 !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
 }
 
-/* Alert Transitions */
-#alertBox {
-  position: relative;
-  z-index: 1050;
+/* Empty State Circle */
+.empty-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+/* Custom Alert */
+.custom-alert {
+  background: rgba(22, 31, 51, 0.95) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+  backdrop-filter: blur(12px);
+}
+
+.custom-alert.alert-success {
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+.custom-alert.alert-danger {
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Footer */
+.glass-footer {
+  background: rgba(11, 15, 25, 0.85);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.text-muted-extra-small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
 }

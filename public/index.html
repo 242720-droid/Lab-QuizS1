@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Library Book Tracker</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans for clean minimalist typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
   <!-- Bootstrap 5 CSS -->
   <link
@@ -19,23 +27,26 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
   >
 
-  <!-- Custom CSS -->
+  <!-- Custom Dark Minimalist CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-light">
+<body class="dark-theme">
 
   <!-- =========================================================================
-       1. Responsive Navigation Bar
+       1. Responsive Dark Minimalist Navigation Bar
        ========================================================================= -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
+  <nav class="navbar navbar-expand-lg sticky-top glass-navbar">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center fw-bold" href="#">
-        <i class="bi bi-book-half me-2 fs-4"></i>
-        <span>Library Book Tracker</span>
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <div class="brand-icon-wrapper me-2">
+          <i class="bi bi-book-half"></i>
+        </div>
+        <span class="brand-text">Book<span class="text-accent">Tracker</span></span>
+        <span class="badge badge-brand ms-2">v1.0</span>
       </a>
 
       <button
-        class="navbar-toggler"
+        class="navbar-toggler border-0 shadow-none"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarContent"
@@ -47,16 +58,16 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item me-lg-3">
-            <span class="badge bg-light text-primary px-3 py-2 rounded-pill fs-6">
-              <i class="bi bi-collection me-1"></i>
-              Total Books: <span id="totalBooksBadge" class="fw-bold">0</span>
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-2 mt-3 mt-lg-0">
+          <li class="nav-item">
+            <span class="stats-pill">
+              <i class="bi bi-collection-fill text-accent me-2"></i>
+              Total Books: <span id="totalBooksBadge" class="fw-bold text-white ms-1">0</span>
             </span>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#addBookSection">
-              <i class="bi bi-plus-circle me-1"></i> Add New Book
+            <a class="nav-link btn-nav-action" href="#addBookSection">
+              <i class="bi bi-plus-lg me-1"></i> Add Book
             </a>
           </li>
         </ul>
@@ -67,28 +78,37 @@
   <!-- =========================================================================
        Main Content Container
        ========================================================================= -->
-  <div class="container my-4">
+  <div class="container my-4 my-lg-5">
 
-    <!-- Hero / Header Section -->
-    <div class="p-4 mb-4 bg-white rounded-3 shadow-sm border-start border-primary border-5">
-      <div class="row align-items-center">
-        <div class="col-md-8">
-          <h2 class="fw-bold text-dark mb-1">
-            <i class="bi bi-journal-bookmark-fill text-primary me-2"></i>Manage Your Library Catalog
-          </h2>
-          <p class="text-muted mb-0">
-            Track books, add new titles, categorize collections, and keep your library organized with real-time persistent storage.
+    <!-- Hero / Header Section (Dark Minimalist Showcase) -->
+    <div class="hero-banner p-4 p-md-5 mb-4 rounded-4 position-relative overflow-hidden">
+      <div class="hero-glow"></div>
+      <div class="row align-items-center position-relative z-1">
+        <div class="col-lg-8">
+          <div class="d-inline-flex align-items-center gap-2 mb-2 hero-tag">
+            <span class="status-dot"></span>
+            <span>Live Catalog Storage</span>
+          </div>
+          <h1 class="display-6 fw-bold text-white mb-2 tracking-tight">
+            Library Catalog & Archives
+          </h1>
+          <p class="hero-subtitle mb-0">
+            A minimalist workspace to curate, organize, and monitor your personal and academic book collections with instant persistent synchronization.
           </p>
         </div>
-        <div class="col-md-4 text-md-end mt-3 mt-md-0">
-          <span class="text-muted small d-block">Full Stack Web Development</span>
-          <span class="badge bg-secondary">Lab Quiz - Q1</span>
+        <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+          <div class="course-chip d-inline-block text-start">
+            <div class="small text-muted mb-1">Full Stack Development</div>
+            <div class="fw-semibold text-white d-flex align-items-center gap-2">
+              <i class="bi bi-award-fill text-accent"></i> Lab Quiz &bull; Question 1
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Alert Message Toast / Banner for Feedback -->
-    <div id="alertBox" class="alert d-none alert-dismissible fade show shadow-sm" role="alert">
+    <div id="alertBox" class="alert d-none alert-dismissible fade show shadow-lg rounded-3 custom-alert" role="alert">
       <span id="alertMessage"></span>
       <button type="button" class="btn-close" aria-label="Close" onclick="hideAlert()"></button>
     </div>
@@ -100,87 +120,104 @@
            2. Add Book Form Section
            ===================================================================== -->
       <div class="col-lg-4" id="addBookSection">
-        <div class="card shadow-sm border-0 sticky-top" style="top: 85px;">
-          <div class="card-header bg-primary text-white py-3">
-            <h5 class="card-title mb-0 fw-semibold">
-              <i class="bi bi-plus-circle-fill me-2"></i>Add New Book
-            </h5>
+        <div class="glass-card shadow-lg sticky-top rounded-4" style="top: 95px;">
+          <div class="card-header-custom p-4 pb-3 border-bottom border-dark-subtle">
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="card-title mb-0 fw-bold text-white d-flex align-items-center gap-2">
+                <i class="bi bi-bookmark-plus-fill text-accent"></i> Add New Book
+              </h5>
+              <span class="badge badge-accent-subtle">New Entry</span>
+            </div>
+            <p class="text-muted small mb-0 mt-1">Register a new book to the database</p>
           </div>
+
           <div class="card-body p-4">
             <form id="addBookForm" novalidate>
               
               <!-- Title Field -->
               <div class="mb-3">
-                <label for="bookTitle" class="form-label fw-semibold">
-                  <i class="bi bi-fonts text-primary me-1"></i>Book Title <span class="text-danger">*</span>
+                <label for="bookTitle" class="form-label form-label-custom">
+                  Book Title <span class="text-accent">*</span>
                 </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="bookTitle"
-                  placeholder="e.g., Clean Code"
-                  required
-                >
+                <div class="input-wrapper">
+                  <i class="bi bi-type-h1 input-icon"></i>
+                  <input
+                    type="text"
+                    class="form-control form-control-custom"
+                    id="bookTitle"
+                    placeholder="e.g., Clean Code"
+                    required
+                  >
+                </div>
                 <div class="invalid-feedback">Please enter a valid book title.</div>
               </div>
 
               <!-- Author Field -->
               <div class="mb-3">
-                <label for="bookAuthor" class="form-label fw-semibold">
-                  <i class="bi bi-person text-primary me-1"></i>Author <span class="text-danger">*</span>
+                <label for="bookAuthor" class="form-label form-label-custom">
+                  Author <span class="text-accent">*</span>
                 </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="bookAuthor"
-                  placeholder="e.g., Robert C. Martin"
-                  required
-                >
+                <div class="input-wrapper">
+                  <i class="bi bi-person input-icon"></i>
+                  <input
+                    type="text"
+                    class="form-control form-control-custom"
+                    id="bookAuthor"
+                    placeholder="e.g., Robert C. Martin"
+                    required
+                  >
+                </div>
                 <div class="invalid-feedback">Please enter the author's name.</div>
               </div>
 
               <!-- Category Field -->
               <div class="mb-3">
-                <label for="bookCategory" class="form-label fw-semibold">
-                  <i class="bi bi-tag text-primary me-1"></i>Category <span class="text-danger">*</span>
+                <label for="bookCategory" class="form-label form-label-custom">
+                  Category <span class="text-accent">*</span>
                 </label>
-                <select class="form-select" id="bookCategory" required>
-                  <option value="" disabled selected>-- Select Category --</option>
-                  <option value="Fiction">Fiction</option>
-                  <option value="Non-Fiction">Non-Fiction</option>
-                  <option value="Science">Science</option>
-                  <option value="Technology">Technology</option>
-                  <option value="History">History</option>
-                  <option value="Philosophy">Philosophy</option>
-                  <option value="Biography">Biography</option>
-                </select>
+                <div class="input-wrapper">
+                  <i class="bi bi-tag input-icon"></i>
+                  <select class="form-select form-control-custom" id="bookCategory" required>
+                    <option value="" disabled selected>-- Select Category --</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Non-Fiction">Non-Fiction</option>
+                    <option value="Science">Science</option>
+                    <option value="Technology">Technology</option>
+                    <option value="History">History</option>
+                    <option value="Philosophy">Philosophy</option>
+                    <option value="Biography">Biography</option>
+                  </select>
+                </div>
                 <div class="invalid-feedback">Please select a category.</div>
               </div>
 
               <!-- Publication Year Field -->
               <div class="mb-4">
-                <label for="bookYear" class="form-label fw-semibold">
-                  <i class="bi bi-calendar-event text-primary me-1"></i>Publication Year <span class="text-danger">*</span>
+                <label for="bookYear" class="form-label form-label-custom">
+                  Publication Year <span class="text-accent">*</span>
                 </label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="bookYear"
-                  placeholder="e.g., 2008"
-                  min="1000"
-                  max="2099"
-                  required
-                >
+                <div class="input-wrapper">
+                  <i class="bi bi-calendar4-week input-icon"></i>
+                  <input
+                    type="number"
+                    class="form-control form-control-custom"
+                    id="bookYear"
+                    placeholder="e.g., 2008"
+                    min="1000"
+                    max="2099"
+                    required
+                  >
+                </div>
                 <div class="invalid-feedback">Please enter a valid year (1000 - 2099).</div>
               </div>
 
               <!-- Submit Button -->
-              <button type="submit" id="submitBtn" class="btn btn-primary w-100 py-2 fw-semibold">
-                <i class="bi bi-bookmark-plus me-1"></i> Add Book
+              <button type="submit" id="submitBtn" class="btn btn-accent w-100 py-2 fw-semibold">
+                <i class="bi bi-plus-circle-fill me-2"></i> Add Book to Library
               </button>
 
               <!-- Reset Button -->
-              <button type="reset" id="resetBtn" class="btn btn-outline-secondary w-100 mt-2 py-2">
+              <button type="reset" id="resetBtn" class="btn btn-ghost w-100 mt-2 py-2">
                 <i class="bi bi-arrow-counterclockwise me-1"></i> Clear Form
               </button>
             </form>
@@ -194,33 +231,29 @@
       <div class="col-lg-8">
         
         <!-- Controls Bar: Category Filter & Stats -->
-        <div class="card shadow-sm border-0 mb-4">
-          <div class="card-body p-3">
-            <div class="row g-2 align-items-center">
-              
-              <!-- Category Filter Dropdown -->
-              <div class="col-md-7">
-                <div class="input-group">
-                  <span class="input-group-text bg-white border-end-0">
-                    <i class="bi bi-funnel-fill text-primary"></i>
-                  </span>
-                  <select class="form-select border-start-0" id="categoryFilter" aria-label="Category Filter">
-                    <option value="All" selected>All Categories (Show All)</option>
-                    <option value="Fiction">Fiction</option>
-                    <option value="Non-Fiction">Non-Fiction</option>
-                    <option value="Science">Science</option>
-                    <option value="Technology">Technology</option>
-                    <option value="History">History</option>
-                    <option value="Philosophy">Philosophy</option>
-                    <option value="Biography">Biography</option>
-                  </select>
-                </div>
+        <div class="glass-card shadow-sm p-3 mb-4 rounded-4">
+          <div class="row g-3 align-items-center">
+            
+            <!-- Category Filter Dropdown -->
+            <div class="col-md-7">
+              <div class="filter-input-wrapper">
+                <i class="bi bi-funnel-fill filter-icon text-accent"></i>
+                <select class="form-select form-control-custom ps-5" id="categoryFilter" aria-label="Category Filter">
+                  <option value="All" selected>All Categories (Show Everything)</option>
+                  <option value="Fiction">Fiction</option>
+                  <option value="Non-Fiction">Non-Fiction</option>
+                  <option value="Science">Science</option>
+                  <option value="Technology">Technology</option>
+                  <option value="History">History</option>
+                  <option value="Philosophy">Philosophy</option>
+                  <option value="Biography">Biography</option>
+                </select>
               </div>
+            </div>
 
-              <!-- Status Count / Filter Feedback -->
-              <div class="col-md-5 text-md-end text-muted small">
-                Showing <span id="filteredCount" class="fw-bold text-dark">0</span> book(s)
-              </div>
+            <!-- Status Count / Filter Feedback -->
+            <div class="col-md-5 text-md-end text-muted small">
+              Displaying <span id="filteredCount" class="count-highlight">0</span> title(s)
             </div>
           </div>
         </div>
@@ -231,25 +264,27 @@
         </div>
 
         <!-- Empty State (Shown when no books match or list is empty) -->
-        <div id="emptyState" class="card shadow-sm border-0 text-center p-5 d-none">
+        <div id="emptyState" class="glass-card text-center p-5 rounded-4 d-none">
           <div class="card-body">
-            <i class="bi bi-book text-muted" style="font-size: 3.5rem;"></i>
-            <h5 class="fw-bold mt-3 text-secondary">No Books Found</h5>
-            <p class="text-muted mb-3" id="emptyStateText">
-              No books are available under this category. Add a new book from the form!
+            <div class="empty-icon-circle mx-auto mb-3">
+              <i class="bi bi-inbox text-accent"></i>
+            </div>
+            <h5 class="fw-bold text-white mb-2">No Records Found</h5>
+            <p class="text-muted mb-4 small" id="emptyStateText">
+              No books found matching your current category selection.
             </p>
-            <button class="btn btn-outline-primary btn-sm" onclick="resetFilter()">
-              <i class="bi bi-arrow-repeat me-1"></i> Show All Books
+            <button class="btn btn-outline-accent btn-sm px-3 py-2" onclick="resetFilter()">
+              <i class="bi bi-arrow-repeat me-1"></i> View All Books
             </button>
           </div>
         </div>
 
         <!-- Loading Spinner -->
         <div id="loadingSpinner" class="text-center py-5">
-          <div class="spinner-border text-primary" role="status">
+          <div class="spinner-border text-accent" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
-          <p class="text-muted mt-2">Loading library catalog...</p>
+          <p class="text-muted mt-3 small">Retrieving library records...</p>
         </div>
 
       </div>
@@ -257,11 +292,12 @@
   </div>
 
   <!-- Footer -->
-  <footer class="bg-white border-top py-3 mt-5">
-    <div class="container text-center text-muted small">
-      <p class="mb-0">
-        📚 <strong>Library Book Tracker</strong> — Full Stack Web Development Lab Quiz (Q1)
+  <footer class="glass-footer py-4 mt-auto">
+    <div class="container text-center">
+      <p class="mb-1 text-muted small">
+        📚 <strong class="text-white">Library Book Tracker</strong> &bull; Full Stack Web Development Lab Quiz
       </p>
+      <span class="text-muted-extra-small">Node.js &bull; Express.js &bull; Bootstrap 5 &bull; Vanilla JS &bull; JSON Storage</span>
     </div>
   </footer>
 
